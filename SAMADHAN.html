@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samadhan — Campus x Industry Problem Solving</title>
+<style>
+:root{
+  --bg:#f6f8fc; --card:#fff; --text:#132238; --muted:#667085;
+  --primary:#4f46e5; --primary2:#7c3aed; --line:#e7eaf0;
+  --green:#0f9d72; --orange:#ea8a00; --shadow:0 12px 35px rgba(30,41,59,.08);
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit}.container{max-width:1180px;margin:auto;padding:0 22px}
+nav{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;z-index:20}
+.nav{display:flex;justify-content:space-between;align-items:center;width:100%}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.5px}.logo span{color:var(--primary)}
+.navlinks{display:flex;gap:24px;color:#667085;font-size:14px}.navlinks a{text-decoration:none;color:inherit}
+.btn{border:0;border-radius:11px;padding:11px 17px;cursor:pointer;font-weight:700}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 7px 18px #4f46e52e}
+.btn.light{background:#eef0ff;color:var(--primary)}
+.hero{padding:70px 0 45px;background:radial-gradient(circle at 85% 15%,#ddd8ff 0,transparent 34%),linear-gradient(180deg,#fff,#f6f8fc)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#eeeaff;color:#5548c9;padding:7px 12px;border-radius:99px;font-size:12px;font-weight:800}
+h1{font-size:54px;line-height:1.03;letter-spacing:-2.2px;margin:18px 0}
+h1 span{color:var(--primary)} .hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:650px}
+.hero-actions{display:flex;gap:12px;margin-top:25px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.stat{background:#fff;border:1px solid var(--line);padding:16px;border-radius:14px}.stat b{font-size:23px}.stat small{display:block;color:var(--muted);margin-top:3px}
+.mock{background:#111827;border-radius:24px;padding:16px;box-shadow:var(--shadow);transform:rotate(1deg)}
+.mock-inner{background:#f8fafc;border-radius:16px;overflow:hidden}.mock-head{padding:14px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.mock-body{padding:18px}
+.mini-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}.mini-card b{font-size:13px}.mini-card span{float:right;font-size:10px;background:#eafaf4;color:var(--green);padding:4px 7px;border-radius:99px}
+section{padding:65px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.section-head h2{font-size:32px;margin:0 0 8px}.section-head p{color:var(--muted);margin:0}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.filters input,.filters select{border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 13px;outline:none}
+.filters input{flex:1;min-width:220px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:99px;font-size:12px;cursor:pointer}.chip.active{background:#ede9fe;color:#5b4bc4;border-color:#c9c1ff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:0 5px 18px rgba(30,41,59,.04)}
+.card-top{display:flex;justify-content:space-between;gap:10px}.tag{font-size:11px;font-weight:800;color:#5b4bc4;background:#f0edff;padding:6px 8px;border-radius:7px}.impact{font-size:11px;color:var(--green);font-weight:800}
+.card h3{font-size:18px;margin:14px 0 8px}.card p{color:var(--muted);font-size:13px;line-height:1.55;min-height:61px}.meta{display:flex;gap:13px;color:#7a8495;font-size:11px;border-top:1px solid var(--line);padding-top:14px;margin-top:14px}.card-actions{display:flex;gap:8px;margin-top:15px}.card-actions button{flex:1}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.num{width:35px;height:35px;border-radius:10px;background:#ede9fe;color:var(--primary);display:grid;place-items:center;font-weight:800}.step h3{font-size:16px}.step p{font-size:13px;line-height:1.5;color:var(--muted)}
+.partners{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.partner-row{display:flex;gap:14px;flex-wrap:wrap}.partner{padding:16px 22px;border:1px solid var(--line);border-radius:12px;font-weight:800;color:#495467;background:#fafbff}
+.cta{background:linear-gradient(135deg,#171c3a,#40319b);color:#fff;border-radius:25px;padding:42px;display:flex;justify-content:space-between;align-items:center}.cta p{color:#d8d8e8;max-width:650px}
+footer{padding:28px 0;color:#7b8494;font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:#11182799;z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{background:#fff;width:min(600px,100%);border-radius:20px;padding:26px;box-shadow:var(--shadow)}.modal-box h2{margin-top:0}.close{float:right;background:#f1f3f6;border:0;border-radius:8px;padding:7px 10px;cursor:pointer}.form{display:grid;gap:12px}.form input,.form textarea,.form select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px}.form textarea{min-height:100px}
+.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:13px 17px;border-radius:10px;display:none;z-index:80}.toast.show{display:block}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.navlinks{display:none}h1{font-size:43px}}
+@media(max-width:560px){.grid,.steps,.stats{grid-template-columns:1fr}.hero{padding-top:45px}.cta{display:block;padding:28px}}
+</style>
+</head>
+<body>
+<nav><div class="container nav">
+  <div class="logo">Samad<span>han</span></div>
+  <div class="navlinks"><a href="#challenges">Challenges</a><a href="#how">How it works</a><a href="#partners">Partners</a></div>
+  <button class="btn primary" onclick="openModal('challengeModal')">Post a Challenge</button>
+</div></nav>
+
+<header class="hero"><div class="container hero-grid">
+  <div>
+    <span class="badge">SIH 2026 • SIH26043</span>
+    <h1>Turn societal problems into <span>collaborative solutions.</span></h1>
+    <p>A digital platform where citizens, universities, students, researchers and industry partners discover real-world challenges, form teams, get mentorship and move ideas from problem to impact.</p>
+    <div class="hero-actions"><button class="btn primary" onclick="document.getElementById('challenges').scrollIntoView({behavior:'smooth'})">Explore Challenges</button><button class="btn light" onclick="openModal('challengeModal')">Submit a Problem</button></div>
+    <div class="stats"><div class="stat"><b>248</b><small>Live challenges</small></div><div class="stat"><b>86</b><small>University partners</small></div><div class="stat"><b>41</b><small>Industry mentors</small></div></div>
+  </div>
+  <div class="mock"><div class="mock-inner">
+    <div class="mock-head"><b>Challenge Feed</b><span>● Live</span></div><div class="mock-body">
+      <div class="mini-card"><span>OPEN</span><b>Waste segregation in campuses</b><br><small>GreenTech • 12 collaborators</small></div>
+      <div class="mini-card"><span>MENTORING</span><b>Rural health access</b><br><small>HealthTech • 7 collaborators</small></div>
+      <div class="mini-card"><span>SOLVING</span><b>Water leakage detection</b><br><small>Smart Cities • 18 collaborators</small></div>
+    </div>
+  </div></div>
+</div></header>
+
+<section id="challenges"><div class="container">
+  <div class="section-head"><div><h2>Discover challenges</h2><p>Find a problem where your skills can make a difference.</p></div><button class="btn light" onclick="openModal('challengeModal')">+ Post Challenge</button></div>
+  <div class="filters"><input id="search" placeholder="Search challenges..." oninput="renderCards()"><select id="domain" onchange="renderCards()"><option value="">All domains</option><option>Environment</option><option>Healthcare</option><option>Education</option><option>Smart Cities</option><option>Agriculture</option></select></div>
+  <div class="chips"><button class="chip active" onclick="setStatus('',this)">All</button><button class="chip" onclick="setStatus('Open',this)">Open</button><button class="chip" onclick="setStatus('Mentoring',this)">Mentoring</button><button class="chip" onclick="setStatus('Solving',this)">Solving</button></div>
+  <br><div id="cards" class="grid"></div>
+</div></section>
+
+<section id="how"><div class="container">
+  <div class="section-head"><div><h2>From challenge to impact</h2><p>A simple workflow connecting the right people at the right time.</p></div></div>
+  <div class="steps">
+    <div class="step"><div class="num">01</div><h3>Post</h3><p>Organizations and communities submit a clearly defined societal challenge with context and expected outcomes.</p></div>
+    <div class="step"><div class="num">02</div><h3>Match</h3><p>Universities, students and experts discover challenges based on skills, location, domain and interests.</p></div>
+    <div class="step"><div class="num">03</div><h3>Collaborate</h3><p>Teams work in shared project spaces with mentors, milestones, discussions and resource sharing.</p></div>
+    <div class="step"><div class="num">04</div><h3>Impact</h3><p>Solutions are piloted with partners, measured using impact metrics and prepared for scale.</p></div>
+  </div>
+</div></section>
+
+<section class="partners" id="partners"><div class="container">
+  <div class="section-head"><div><h2>Built for collaboration</h2><p>One ecosystem for every stakeholder.</p></div></div>
+  <div class="partner-row"><div class="partner">🎓 Universities</div><div class="partner">🏭 Industry</div><div class="partner">👥 Communities</div><div class="partner">🔬 Researchers</div><div class="partner">💡 Student Teams</div><div class="partner">🏛️ Government</div></div>
+</div></section>
+
+<section><div class="container"><div class="cta"><div><h2>Have a problem worth solving?</h2><p>Bring your challenge to the ecosystem and connect with students, researchers and industry partners who can help turn it into a deployable solution.</p></div><button class="btn primary" style="background:#fff;color:#40319b" onclick="openModal('challengeModal')">Launch a Challenge →</button></div></div></section>
+
+<footer><div class="container">Samadhan Demo • Concept website for SIH 2026 problem statement SIH26043.all rights are reserved </div></footer>
+
+<div class="modal" id="challengeModal"><div class="modal-box">
+  <button class="close" onclick="closeModal()">✕</button><h2>Post a societal challenge</h2><p style="color:#667085">Create a challenge for universities and industry to collaborate on.</p>
+  <form class="form" onsubmit="submitChallenge(event)"><input id="title" required placeholder="Challenge title"><select id="formDomain" required><option value="">Select domain</option><option>Environment</option><option>Healthcare</option><option>Education</option><option>Smart Cities</option><option>Agriculture</option></select><textarea id="description" required placeholder="Describe the problem and desired outcome"></textarea><input id="org" required placeholder="Organization / community name"><button class="btn primary">Publish Challenge</button></form>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const data=[
+ {title:"Smart waste segregation for college campuses",domain:"Environment",status:"Open",desc:"Create an affordable system that improves segregation, collection and recycling behavior across campuses.",org:"Campus Green Collective",people:12},
+ {title:"Improving rural access to primary healthcare",domain:"Healthcare",status:"Mentoring",desc:"Design a digital-first model that helps rural communities connect with verified primary healthcare resources.",org:"Rural Health Network",people:7},
+ {title:"Early water-leak detection for public buildings",domain:"Smart Cities",status:"Solving",desc:"Detect hidden water leakage using low-cost sensors and analytics before significant water is wasted.",org:"City Innovation Lab",people:18},
+ {title:"Digital learning support for first-generation students",domain:"Education",status:"Open",desc:"Build an accessible platform connecting students with peer mentors, faculty resources and learning pathways.",org:"Education Access Foundation",people:9},
+ {title:"Market intelligence for small farmers",domain:"Agriculture",status:"Open",desc:"Help small farmers make better crop and selling decisions using localized market and demand signals.",org:"Agri Futures Lab",people:15},
+ {title:"Accessible last-mile mobility mapping",domain:"Smart Cities",status:"Mentoring",desc:"Map accessibility barriers and create better navigation for people with mobility challenges.",org:"Inclusive Mobility Forum",people:11}
+];
+let currentStatus="";
+function setStatus(s,el){currentStatus=s;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderCards()}
+function renderCards(){
+ const q=document.getElementById('search').value.toLowerCase(), d=document.getElementById('domain').value;
+ const items=data.filter(x=>(!q||(`${x.title} ${x.desc} ${x.org}`.toLowerCase().includes(q)))&&(!d||x.domain===d)&&(!currentStatus||x.status===currentStatus));
+ document.getElementById('cards').innerHTML=items.map((x,i)=>`<article class="card"><div class="card-top"><span class="tag">${x.domain}</span><span class="impact">● ${x.status}</span></div><h3>${x.title}</h3><p>${x.desc}</p><div class="meta"><span>🏢 ${x.org}</span><span>👥 ${x.people}</span></div><div class="card-actions"><button class="btn light" onclick="showToast('Opening challenge workspace…')">View details</button><button class="btn primary" onclick="showToast('Request to join sent!')">Join team</button></div></article>`).join('') || '<div class="card"><h3>No challenges found</h3><p>Try another search or domain.</p></div>';
+}
+function openModal(id){document.getElementById(id).classList.add('show')}
+function closeModal(){document.getElementById('challengeModal').classList.remove('show')}
+function showToast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2400)}
+function submitChallenge(e){e.preventDefault();const title=document.getElementById('title').value,domain=document.getElementById('formDomain').value,desc=document.getElementById('description').value,org=document.getElementById('org').value;data.unshift({title,domain,status:"Open",desc,org,people:1});closeModal();e.target.reset();renderCards();showToast('Challenge published successfully!')}
+renderCards();
+</script>
+</body>
+</html>
